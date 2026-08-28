@@ -1,0 +1,5 @@
+user = securemail
+password = securemail99
+hosts = db
+dbname = securemail
+query = SELECT m.mail_address FROM alias_account a JOIN alias_account_mail_account am ON a.id = am.alias_account_id JOIN mail_account m ON am.mail_account_id = m.id WHERE a.alias_address='%s' AND a.active=1

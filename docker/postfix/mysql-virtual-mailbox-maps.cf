@@ -1,0 +1,5 @@
+user = securemail
+password = securemail99
+hosts = db
+dbname = securemail
+query = SELECT mail_dir FROM mail_account WHERE (mail_address='%s' OR short_name='%s') AND active=1

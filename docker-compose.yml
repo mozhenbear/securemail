@@ -1,0 +1,95 @@
+version: '3.8'
+
+services:
+  # 1. MySQL 8.0 核心資料庫
+  db:
+    image: mysql:8.0
+    container_name: securemail_db
+    restart: unless-stopped
+    environment:
+      TZ: Asia/Taipei
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: securemail
+      MYSQL_USER: securemail
+      MYSQL_PASSWORD: securemail99
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+      - ./database/init.sql:/docker-entrypoint-initdb.d/01_init.sql:ro
+    # ports:
+    #   - "3306:3306" # 容器內部透過 db:3306 互通，若需宿主機外部直連資料庫才取消註解
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "securemail", "-psecuremail99"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  # 2. Postfix MTA 郵件傳輸代理
+  postfix:
+    build:
+      context: ./docker/postfix
+      dockerfile: Dockerfile
+    container_name: securemail_postfix
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "25:25"
+      - "587:587"
+    volumes:
+      - ./data/mail:/var/mail/vhosts
+      - ./docker/postfix/main.cf:/etc/postfix/main.cf:ro
+      - ./docker/postfix/master.cf:/etc/postfix/master.cf:ro
+      - ./docker/postfix/mysql-virtual-mailbox-domains.cf:/etc/postfix/mysql-virtual-mailbox-domains.cf:ro
+      - ./docker/postfix/mysql-virtual-mailbox-maps.cf:/etc/postfix/mysql-virtual-mailbox-maps.cf:ro
+      - ./docker/postfix/mysql-virtual-alias-maps.cf:/etc/postfix/mysql-virtual-alias-maps.cf:ro
+
+  # 3. Dovecot IMAP/POP3 郵件服務
+  dovecot:
+    build:
+      context: ./docker/dovecot
+      dockerfile: Dockerfile
+    container_name: securemail_dovecot
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "110:110"
+      - "143:143"
+      - "993:993"
+      - "995:995"
+    volumes:
+      - ./data/mail:/var/mail/vhosts
+      - ./docker/dovecot/dovecot.conf:/etc/dovecot/dovecot.conf:ro
+      - ./docker/dovecot/dovecot-sql.conf.ext:/etc/dovecot/dovecot-sql.conf.ext:ro
+
+  # 4. SecureMail Webmail & API Server (官方預建安全映像檔)
+  web:
+    image: mozhenbear/securemail-web:latest
+    container_name: securemail_web
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+      postfix:
+        condition: service_started
+      dovecot:
+        condition: service_started
+    environment:
+      TZ: Asia/Taipei
+      PORT: 3000
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_USER: securemail
+      DB_PASSWORD: securemail99
+      DB_NAME: securemail
+      SMTP_HOST: postfix
+      SMTP_PORT: 25
+      IMAP_HOST: dovecot
+      IMAP_PORT: 143
+      JWT_SECRET: securemail-production-secret-token-key-2026
+    volumes:
+      - ./data/big_attachments:/app/data/big_attachments
+    ports:
+      - "33333:3000"

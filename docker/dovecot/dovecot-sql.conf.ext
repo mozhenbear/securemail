@@ -1,0 +1,14 @@
+driver = mysql
+connect = host=db dbname=securemail user=securemail password=securemail99
+
+# Default password scheme
+default_pass_scheme = PLAIN
+
+# Password query for authentication (supports {PLAIN} and hash schemes)
+password_query = SELECT mail_address AS user, concat('{PLAIN}', COALESCE(init_password, 'user123')) AS password, 5000 AS userdb_uid, 5000 AS userdb_gid, concat('/var/mail/vhosts/', mail_address) AS userdb_home, concat('maildir:/var/mail/vhosts/', mail_address) AS userdb_mail, concat('*:storage=', quota, 'M') AS userdb_quota_rule FROM mail_account WHERE (mail_address = '%u' OR short_name = '%u') AND active = 1
+
+# User query for mailbox lookup (home MUST be an absolute path without maildir: prefix)
+user_query = SELECT concat('/var/mail/vhosts/', mail_address) AS home, concat('maildir:/var/mail/vhosts/', mail_address) AS mail, 5000 AS uid, 5000 AS gid, concat('*:storage=', quota, 'M') AS quota_rule FROM mail_account WHERE (mail_address = '%u' OR short_name = '%u') AND active = 1
+
+# Iterate all valid users
+iterate_query = SELECT mail_address AS user FROM mail_account WHERE active = 1

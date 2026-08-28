@@ -1,0 +1,5 @@
+user = securemail
+password = securemail99
+hosts = db
+dbname = securemail
+query = SELECT domain_name FROM mail_domain WHERE domain_name='%s' AND active=1
