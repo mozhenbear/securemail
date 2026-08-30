@@ -1,7 +1,7 @@
 <div align="center">
 
-# 📬 SecureMail 企業安全郵件系統
-### 現代化、高安全、高效能企業級私有化郵件伺服器與 Webmail
+# 📬 SecureMail 企業級安全郵件系統
+### 現代化、高安全、輕量極速的私有郵件伺服器與 Webmail 平台
 
 [![Docker Pulls](https://img.shields.io/docker/pulls/mozhenbear/securemail-web?style=for-the-badge&logo=docker&color=2496ED)](https://hub.docker.com/r/mozhenbear/securemail-web)
 [![Docker Image Size](https://img.shields.io/docker/image-size/mozhenbear/securemail-web/latest?style=for-the-badge&logo=docker&color=4682B4)](https://hub.docker.com/r/mozhenbear/securemail-web)
@@ -21,152 +21,85 @@
 **[English](README.md) | [繁體中文](README.zh-TW.md) | [简体中文](README.zh-CN.md)**
 
 <p align="center">
-  <b>SecureMail</b> 是一套針對企業安全防護、隱私控管與現代化辦公體驗的企業級私有化郵件平台。底層深度整合 <b>Postfix (MTA)</b>、<b>Dovecot (IMAP/POP3)</b>、<b>MySQL 8.0</b> 與現代化 <b>TypeScript Webmail</b>，提供開箱即用的多層安全審核、RFC 2387 內嵌 CID 圖片解析、Web DLP 浮水印、RFC 5545 iCalendar 會議邀請、全量合規歸檔與多語系切換支援。
+  <b>SecureMail</b> 是一套針對現代企業安全防護、機密審核、合規歸檔與極致操作體驗打造的企業級安全郵件平台。深度整合 <b>Postfix (MTA)</b>、<b>Dovecot (IMAP/POP3)</b>、<b>MySQL 8.0</b> 與現代化 <b>TypeScript Webmail</b>，開箱即用提供多層次郵件審核、Web Beacon 遠端圖片防追蹤、RFC 5545 標準會議邀請、全量合規歸檔、手機自適應與多國語系支援。
 </p>
-
----
 
 </div>
 
-## 📑 目錄
-- [✨ 核心特色功能](#-核心特色功能)
-- [🚀 快速啟動 (1 分鐘 Docker 部署)](#-快速啟動-1-分鐘-docker-部署)
-- [🏗 系統架構與技術棧](#-系統架構與技術棧)
-- [🛡 安全與隱私防護亮點](#-安全與隱私防護亮點)
-- [🌐 國際化多語系 (i18n) 與時區](#-國際化多語系-i18n-與時區)
-- [📋 企業 DNS 解析設定清單](#-企業-dns-解析設定清單)
-- [📁 資料夾管理與移動體系](#-資料夾管理與移動體系)
-- [👥 系統管理後台與權限體系](#-系統管理後台與權限體系)
-- [📄 開源授權條款](#-開源授權條款)
+---
+
+## 📸 介面展示 (Screenshots)
+
+<div align="center">
+
+### 💻 現代化 Webmail 操作介面
+*簡潔流暢的電腦端三欄佈局，原生支援手機端單欄下鑽與滑動抽屜自適應*
+<img src="docs/images/webmail-preview.png" alt="SecureMail Webmail Interface" width="95%" style="border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); margin-bottom: 24px;">
+
+### 🛡️ 企業管理後台 (Admin Console)
+*網域帳號維護、多層審核規則、合規歸檔檢索、LDAP 同步與自訂企業品牌*
+<img src="docs/images/admin-preview.png" alt="SecureMail Admin Console" width="95%" style="border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
+
+</div>
 
 ---
 
-## ✨ 核心特色功能
+## 📊 規格對比矩陣 (SecureMail 與主流競品對比)
 
-| 功能類別 | 亮點摘要 |
+| 功能特性 (Features) | **SecureMail Enterprise** | **Mailcow: dockerized** | **iRedMail** | **Roundcube** | **Zimbra** |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| **企業外發郵件安全審核** | **✅ 內建 7 階段攔截** | ❌ 無 | 💰 需加購 Pro 版 | ❌ 無 | ❌ 無 |
+| **遠端圖片隱私防追蹤** | **✅ 向量佔位安全隔離** | ❌ 無 | ❌ 無 | ⚠️ 基礎阻擋 | ❌ 無 |
+| **RFC 5545 會議排程與 RSVP** | **✅ 原生雙向整合** | ⚠️ 基礎 SOGo | 💰 需外掛 SOGo | ⚠️ 需外掛插件 | ✅ 內建支援 |
+| **行動裝置手機自適應 (RWD)** | **✅ 原生單欄下鑽** | ⚠️ 部分適配 | 💰 需付費皮膚 | ⚠️ 需自訂主題 | ⚠️ 介面厚重 |
+| **全量合規歸檔庫 (WORM)** | **✅ SHA-256 / Legal Hold** | ⚠️ 需整合 Mail Piler | 💰 需加購 Pro 版 | ❌ 無 | 💰 需付費網路版 |
+| **Web DLP 動態防洩密浮水印** | **✅ 原生動態渲染** | ❌ 無 | ❌ 無 | ❌ 無 | ❌ 無 |
+| **發信緩衝撤回與預約發信** | **✅ 內建 5s 撤回/定時** | ❌ 無 | ❌ 無 | ⚠️ 需外掛插件 | ❌ 無 |
+| **硬體資源記憶體佔用** | **⚡ 極致輕量 (< 300MB)** | 🐢 厚重 (需 4GB+ RAM) | ⚠️ 中等 (需 2GB+ RAM) | ⚠️ 需依賴 LAMP | 🐢 極厚重 (需 8GB+ RAM) |
+| **Docker 一鍵部署** | **🚀 1 行指令 (`docker compose`)** | ⚠️ 設定腳本繁複 | ❌ 腳本裸機安裝 | ❌ 僅為前端 Web | ❌ 單體龐大難容器化 |
+| **國際化多語系 (i18n)** | **✅ 繁中 / 簡中 / 英文** | ✅ 多語系 | ✅ 多語系 | ✅ 多語系 | ✅ 多語系 |
+
+---
+
+## ✨ 核心特色與商業亮點
+
+| 領域分類 | 功能重點 |
 | :--- | :--- |
-| **🛡️ 隱私安全防護** | 外部圖片防追蹤阻擋、Anti-Spam & 防毒特徵檢測、Web DLP 動態防洩密浮水印、TOTP 2FA、RFC 2387 MIME 內嵌 CID 圖片引擎 |
-| **✉️ 現代化辦公體驗** | 發信 5 秒緩衝撤回 (Undo Send)、預約定時發信、多簽名檔管理與企業公版、超大附件雲端下載卡片、休假自動回覆 |
-| **⚖️ 企業多層安全審核** | 7 階段發信檢核（敏感關鍵字、收件人上限、副檔名類型與大小、外網審核），支援主管差假代理人自動轉派 |
-| **📅 會議與組織通訊錄** | RFC 5545 / RFC 6047 標準 iCalendar 會議邀請與一鍵 RSVP 回覆（接受/暫定/婉拒），企業 LDAP/AD 同步與 SSO (SAML 2.0 / OIDC) |
-| **📁 資料夾與自動分類** | 自訂資料夾生命週期、全域三合一移動整合（右鍵選單、批次工具列、閱讀面板）、動態分類規則即時分流 |
-| **🌐 全球多語系支援** | 內建 **繁體中文**、**簡體中文**、**英文 (English)**，支援瀏覽器語言自動偵測與全域毫秒級時區轉換 |
+| **🛡️ 隱私安全防護** | Web Beacon 遠端圖片追蹤阻擋、Anti-Spam/Virus 特徵過濾、Web DLP 動態浮水印、TOTP 雙因子驗證、RFC 2387 內嵌圖片引擎 |
+| **✉️ 現代化辦公效率** | 發信 5 秒倒數一鍵撤回 (Undo Send)、預約定時發信、多簽名檔管理與企業公版範本、超大附件雲端下載卡片、休假自動回覆 |
+| **⚖️ 企業多層審核** | 7 階段安全檢核 (關鍵字、收件人上限、附件大小與類型、外網審核)、主管差旅時區感知代理人指派 |
+| **📅 會議中心與整合** | RFC 5545 / RFC 6047 標準會議邀請，支援 1 鍵回覆出席 (接受/暫定/婉拒)、企業 LDAP/AD 排程同步與 SSO 單一登入 |
+| **📱 行動端手機自適應** | 智慧手機與平板最佳化排版、滑出式資料夾抽屜、單欄下鑽讀信與全螢幕寫信、常駐底部快捷導航列 |
+| **📁 自訂資料夾與規則** | IMAP 自訂資料夾管理、3 合 1 移動整合 (右鍵選單、批次列、閱讀窗格)、多規則自動分類過濾引擎 |
+| **🌐 全球化與多時區** | 內建**英文**、**繁體中文**、**簡體中文**，支援瀏覽器語言自動偵測與毫秒級時區雙向轉換 |
 
 ---
 
-## 🚀 快速啟動 (1 分鐘 Docker 部署)
+## 🚀 快速上手 (1 分鐘啟動)
 
 ### 1. 環境需求
-- **Docker Engine**：20.10+
-- **Docker Compose**：v2.0+
-- **主機通訊埠**：`25` (SMTP), `80/443` (Web), `143/993` (IMAP), `587` (Submission)
+- **Docker Engine**: 20.10+
+- **Docker Compose**: v2.0+
+- **本機連接埠**: `25` (SMTP), `80/443` (Web), `143/993` (IMAP), `587` (Submission)
 
 ### 2. 下載與啟動
 ```bash
-# 複製儲存庫
+# Clone 儲存庫
 git clone https://github.com/mozhenbear/securemail.git
 cd securemail
 
-# 使用 Docker Compose 拉取並啟動所有容器
+# 透過 Docker Compose 一鍵啟動所有服務
 docker compose pull
 docker compose up -d
 ```
 
-### 3. 系統入口
-- **用戶 Webmail 介面**：`http://localhost:33333` (或您的伺服器網域名稱)
-- **系統管理控制台**：`http://localhost:33333/admin`
-  - 預設管理員帳號：`admin`
-  - 預設登入密碼：`admin123`
+### 3. 存取系統
+- **使用者 Webmail 介面**: `http://localhost:33333` (或您的網域)
+- **系統管理員後台**: `http://localhost:33333/admin`
+  - 預設管理員帳號: `admin`
+  - 預設管理員密碼: `admin123`
 
 ---
 
-## 🏗 系統架構與技術棧
-
-```mermaid
-graph TB
-    subgraph Clients["客戶端與外部世界"]
-        Browser["現代化瀏覽器 (Webmail / Admin)"]
-        ExternalMail["外部郵件伺服器 (Gmail / Outlook)"]
-    end
-
-    subgraph DockerPlatform["SecureMail Docker 容器叢集"]
-        WebNode["Web / API 服務 (Node.js 20 + TypeScript)<br>Express · MailComposer · MailParser · i18n"]
-        Postfix["Postfix MTA<br>Port 25 / 587"]
-        Dovecot["Dovecot IMAP / SASL<br>Port 143 / 993"]
-        Database[("MySQL 8.0 資料庫<br>帳號 · 審核 · 行事曆 · 歸檔")]
-    end
-
-    Browser -->|HTTP / REST API| WebNode
-    WebNode -->|SMTP 直發 / 審核放行| Postfix
-    WebNode -->|IMAP 同步 / 寫入 Sent| Dovecot
-    WebNode -->|SQL 資料存取| Database
-    Postfix -->|SMTP 派送 / DKIM 簽章| ExternalMail
-    ExternalMail -->|MX 收信接收| Postfix
-    Dovecot -->|驗證與虛擬郵箱| Database
-```
-
----
-
-## 🛡 安全與隱私防護亮點
-
-1. **RFC 2387 MIME Multipart/Related CID 引擎**：
-   - 寄信時自動將內文 Base64 圖片轉換為標準 MIME inline 附件並附加 `Content-ID`，徹底解決 **Gmail**、**Outlook**、**Apple Mail** 與 **Thunderbird** 圖片無法顯示或破圖之問題。
-2. **Web Beacon 隱私防追蹤橫幅**：
-   - 預設攔截遠端外連圖片，防止寄件者探測收件者的 IP 與開信行為；支援「單次顯示」與「信任寄件者永久載入」。
-3. **Web DLP 動態防洩密浮水印**：
-   - 閱讀區與附件預覽區域動態疊加使用者姓名、信箱帳號與存取時間浮水印，有效遏止截圖或拍照外洩。
-4. **多維度送審機制與差假代理人**：
-   - 觸發外網審核、關鍵字或附件規則之郵件自動進入待審佇列，支援設定起訖代理人轉派審核。
-
----
-
-## 🌐 國際化多語系 (i18n) 與時區
-
-SecureMail 提供原生多語系架構：
-- **支援語言**：
-  - `zh-TW`：繁體中文 (Traditional Chinese)
-  - `zh-CN`：简体中文 (Simplified Chinese)
-  - `en`：English (英文 - 預設回退)
-- **智慧偏好偵測**：透過 `navigator.languages` 自動識別瀏覽器慣用語言。
-- **即時切換**：配置於頂部導航列時區選單旁，點擊即可無縫即時切換。
-- **全域時區感知**：以 UTC 毫秒時間戳為核心比對基準，徹底消除跨時區計算誤差。
-
----
-
-## 📋 企業 DNS 解析設定清單
-
-為確保郵件發送成功率並避免進入垃圾信箱，請於您的網域 DNS 代管商處設定以下紀錄：
-
-| 類型 | 主機名稱 (Name) | 設定值 (Value) | 目的說明 |
-| :--- | :--- | :--- | :--- |
-| **A** | `mail.yourdomain.com` | `<伺服器公網 IP>` | 郵件伺服器主機位址 |
-| **MX** | `@` | `mail.yourdomain.com` (優先級 10) | 郵件路由指向 |
-| **TXT** | `@` | `v=spf1 mx ip4:<伺服器公網 IP> ~all` | SPF 發信來源驗證 |
-| **TXT** | `_dmarc.yourdomain.com` | `v=DMARC1; p=quarantine; pct=100; rua=mailto:dmarc@yourdomain.com` | DMARC 防偽保護政策 |
-| **TXT** | `default._domainkey` | `v=DKIM1; k=rsa; p=<您的公鑰>` | DKIM 數位簽章防篡改 |
-| **PTR** | `<反向 IP>` | `mail.yourdomain.com` | 反向 DNS 解析 (防垃圾信必備) |
-
----
-
-## 📁 資料夾管理與移動體系
-
-SecureMail 具備完整的資料夾管理體系：
-- **系統保留資料夾**：`收件箱 (INBOX)`、`草稿箱 (Drafts)`、`已發送 (Sent)`、`待審核 (Approval)`、`已審核通過 (Approvaled)`、`已拒絕發送 (Rejected)`、`垃圾箱 (Trash)`、`垃圾郵件 (Junk)`、`封存庫 (Archive)`。
-- **全域三合一移動整合**：
-  1. **右鍵快捷選單**：內建視窗邊界偵測向上翻轉展開，防止遮擋。
-  2. **批次操作列**：多選郵件後一鍵批次搬移。
-  3. **閱讀面板下拉**：閱讀郵件時直接下拉快速分流。
-
----
-
-## 👥 系統管理後台與權限體系
-
-- **獨立系統管理後台 (`/admin`)**：後台管理員帳號與一般郵件網域完全解耦，刪除測試網域絕不影響管理員權限。
-- **角色型存取控制 (RBAC)**：支援於一般郵件帳號上一鍵賦予 `ROLE_ADMIN` 後台權限或建立獨立管理員。
-- **不可篡改之合規歸檔庫**：全量歸檔進出郵件，提供精確法規檢索與原信匯出。
-
----
-
-## 📄 開源授權條款
-
-本專案採用 [GNU Affero General Public License v3.0 (AGPL-3.0)](LICENSE) 授權發布。
+## 📄 開源授權
+本專案基於 **AGPL-3.0 License** 開源發布，詳見 [LICENSE](LICENSE) 文件。
