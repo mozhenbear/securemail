@@ -101,5 +101,9 @@ docker compose up -d
 
 ---
 
-## 📄 开源授权
-本项目基于 **AGPL-3.0 License** 开源发布，详见 [LICENSE](LICENSE) 文件。
+## 📄 授权条款与商业模式
+SecureMail 采用**双重授权模式 (Dual Licensing Model)**：
+- **社区免费授权 (Community Free License)**：启用账号在 5 个以内（`<= 5 Users`）可永久免费使用全部核心安全与审核功能，可用于商业营运。
+- **企业商业扩充授权 (Enterprise Commercial License)**：针对需要 5 个以上账号（`> 5 Users`）、原厂 SLA 技术支持、定制化开发或高可用架构之企业用户。
+  - 洽询信箱：`mozhenbear@zodic.dev`
+详细三语系（英文、繁体中文、简体中文）授权规范请参阅 [LICENSE](LICENSE) 文件。

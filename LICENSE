@@ -1,34 +1,101 @@
-SecureMail Community & Commercial Dual License
-===================================================
-
-版權所有 (c) 2026 SecureMail 團隊。保留所有權利。
+SecureMail Dual License Agreement (Community & Commercial)
+===============================================================================
 Copyright (c) 2026 SecureMail Team. All rights reserved.
+版權所有 (c) 2026 SecureMail 團隊。保留所有權利。
+版权所有 (c) 2026 SecureMail 团队。保留所有权利。
 
+===============================================================================
+[EN] 1. ENGLISH VERSION
+===============================================================================
+
+1.1 Community Free License (Up to 5 Users)
 -------------------------------------------------------------------------------
-1. 社群免費授權條款 (Community Free License - Up to 5 Users)
+This software is provided under a Community Free License with the following terms:
+- Any individual, company, or organization is granted a free, perpetual, and legal
+  license to deploy, run, and use all core features of SecureMail on their own
+  servers or private cloud environments, provided that the total number of active
+  mailboxes does not exceed five (<= 5 Users).
+- This includes internal business operations and commercial usage within the 5-user limit.
+- The Community Free License does not include direct vendor SLA technical support,
+  custom development, or dedicated engineering assistance.
+
+1.2 Enterprise Commercial License (More than 5 Users / Custom SLA)
+-------------------------------------------------------------------------------
+If your enterprise or organization requires:
+- More than five active mailboxes (> 5 Users);
+- Guaranteed 24x7 / 8x5 vendor SLA technical support and maintenance;
+- Custom feature development, bespoke integration, or custom security plugins;
+- Dedicated enterprise-signed RSA-4096 license certificates and High Availability (HA) support;
+
+Please contact the SecureMail commercial team to obtain an Enterprise Commercial License:
+- Contact Email: mozhenbear@zodic.dev
+- Commercial Inquiries: mozhenbear@zodic.dev
+
+1.3 Disclaimer of Warranty
+-------------------------------------------------------------------------------
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+===============================================================================
+[繁中] 2. 繁體中文版本 (Traditional Chinese)
+===============================================================================
+
+2.1 社群免費授權條款 (最多 5 個帳號)
 -------------------------------------------------------------------------------
 本軟體提供「社群版 (Community Edition)」免費授權：
-- 任何個人、企業或組織，在**啟用帳號數量小於或等於 5 個帳號 (<= 5 Users)** 的前提下，
+- 任何個人、企業或組織，在啟用帳號數量小於或等於 5 個帳號 (<= 5 Users) 的前提下，
   皆可免費、永久、合法地在自有伺服器或私有化雲端環境中部署、運行與使用本系統全部核心功能，
   可用於內部日常辦公或一般商業營運用途。
 - 免費授權不包含原廠 SLA 專人即時技術支援與自訂功能開發服務。
 
--------------------------------------------------------------------------------
-2. 商業擴充授權條款 (Commercial License - More than 5 Users)
+2.2 商業擴充授權條款 (超過 5 個帳號 / 企業客製化)
 -------------------------------------------------------------------------------
 若您的企業或組織具備以下需求：
-- 需要使用 **超過 5 個使用者帳號 (> 5 Users)**；
+- 需要使用超過 5 個使用者帳號 (> 5 Users)；
 - 需要原廠專屬 7x24 / 5x8 技術支援服務、系統客製化或專屬功能模組開發；
 - 需要取得專屬企業名稱簽名之 RSA-4096 商業授權證書與高可用 (HA) 架構支援；
 
 請聯繫 SecureMail 原廠商務團隊取得商業擴充授權 (Commercial License)：
+- 聯絡信箱 (Contact Email)：mozhenbear@zodic.dev
+- 商務洽詢 (Official Inquiries)：mozhenbear@zodic.dev
 
-聯絡信箱 (Contact Email)：mozhenbear@zodic.dev
-官方支援 (Official Inquiries)：mozhenbear@zodic.dev
-
--------------------------------------------------------------------------------
-3. 免責聲明 (Disclaimer)
+2.3 免責聲明 (Disclaimer)
 -------------------------------------------------------------------------------
 本軟體按「現狀 (AS IS)」提供，不提供任何明示或暗示的保證，包括但不限於對適銷性、
 特定用途適用性及不侵權的保證。在任何情況下，作者或版權持有人均不對因使用本軟體
 或與本軟體相關的任何直接、間接、附帶、特殊、懲罰性或後果性損害承擔責任。
+
+
+===============================================================================
+[简中] 3. 简体中文版本 (Simplified Chinese)
+===============================================================================
+
+3.1 社区免费授权条款 (最多 5 个账号)
+-------------------------------------------------------------------------------
+本软件提供「社区版 (Community Edition)」免费授权：
+- 任何个人、企业或组织，在启用账号数量小于或等于 5 个账号 (<= 5 Users) 的前提下，
+  均可免费、永久、合法地在自有服务器或私有化云端环境中部署、运行与使用本系统全部核心功能，
+  可用于内部日常办公或一般商业营运用途。
+- 免费授权不包含原厂 SLA 专人即时技术支持与定制功能开发服务。
+
+3.2 商业扩充授权条款 (超过 5 个账号 / 企业定制化)
+-------------------------------------------------------------------------------
+若您的企业或组织具备以下需求：
+- 需要使用超过 5 个用户账号 (> 5 Users)；
+- 需要原厂专属 7x24 / 5x8 技术支持服务、系统定制化或专属功能模块开发；
+- 需要取得专属企业名称签名之 RSA-4096 商业授权证书与高可用 (HA) 架构支持；
+
+请联系 SecureMail 原厂商务团队取得商业扩充授权 (Commercial License)：
+- 联络信箱 (Contact Email)：mozhenbear@zodic.dev
+- 商务洽询 (Official Inquiries)：mozhenbear@zodic.dev
+
+3.3 免责声明 (Disclaimer)
+-------------------------------------------------------------------------------
+本软件按「现状 (AS IS)」提供，不提供任何明示或暗示的保证，包括但不限于对适销性、
+特定用途适用性及不侵权的保证。在任何情况下，作者或版权持有人均不对因使用本软件
+或与本软件相关的任何直接、间接、附带、特殊、惩罚性或后果性损害承担责任。

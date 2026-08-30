@@ -155,5 +155,9 @@ graph TB
 
 ---
 
-## 📄 License
-This project is open-sourced under the **AGPL-3.0 License**. See the [LICENSE](LICENSE) file for details.
+## 📄 License & Commercial Terms
+SecureMail is licensed under a **Dual Licensing Model**:
+- **Community Free License**: Free and perpetual for up to 5 active mailboxes (`<= 5 Users`) with all core security and audit features included for personal or commercial use.
+- **Enterprise Commercial License**: For deployments requiring `> 5 Users`, dedicated vendor SLA support, bespoke integration, and High Availability (HA) clustering.
+  - Contact: `mozhenbear@zodic.dev`
+See the [LICENSE](LICENSE) file for the complete multi-language license agreement (English, Traditional Chinese, Simplified Chinese).
