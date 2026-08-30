@@ -44,10 +44,35 @@
 
 ---
 
-## 📊 Feature Comparison (SecureMail vs Alternatives)
+## 📊 Objective Feature Comparison Matrix
 
-| Feature / Capability | **SecureMail Enterprise** | **Mailcow: dockerized** | **iRedMail** | **Roundcube** | **Zimbra** |
+> *Last verified & updated: August 2026. Based on official documentation and publicly available releases of each respective project.*
+
+| Capability / Dimension | **SecureMail Enterprise** | **Mailcow: dockerized** | **iRedMail** | **Roundcube Webmail** | **Zimbra Collaboration** |
 | :--- | :---: | :---: | :---: | :---: | :---: |
+| **System Scope** | **Full Server + Modern Webmail** | Full Server + SOGo Webmail | Full Server + Webmail | Webmail Client Only (MUA) | Full Enterprise Suite |
+| **Outbound Email Security Audit** | **✅ Built-in 7-Stage Workflow** | ❌ No native approval UI | 💰 Paid iRedAdmin-Pro only | ❌ None (MUA only) | 💰 Paid Network Edition only |
+| **Remote Image Anti-Tracking** | **✅ Vector Isolation Placeholder** | ⚠️ Basic Blocker (SOGo) | ⚠️ Basic Blocker (MUA) | ✅ Native "Display Images" Toggle | ⚠️ Basic Blocker |
+| **RFC 5545 iCalendar & Meeting RSVP** | **✅ Native 2-Way Integration** | ✅ Native via SOGo CalDAV | 💰 Via SOGo Component | ⚠️ Requires 3rd-party plugin | ✅ Native Built-in |
+| **Mobile Responsive UI (RWD)** | **✅ Native Single-Column Drilldown** | ⚠️ Responsive SOGo theme | ⚠️ Via Elastic Skin / SOGo | ✅ Official Elastic Skin | ⚠️ Zimbra Modern UI |
+| **Full Compliance WORM Archiving** | **✅ Native SHA-256 / Legal Hold** | ⚠️ Via Mailpiler integration | 💰 Paid iRedAdmin-Pro only | ❌ None (MUA only) | 💰 Paid Network Edition only |
+| **Web DLP Dynamic Watermark** | **✅ Native Anti-Leak Overlay** | ❌ None | ❌ None | ❌ None | ❌ None |
+| **5s Undo Send & Scheduled Send** | **✅ Built-in Native Service** | ❌ None | ❌ None | ⚠️ Requires 3rd-party plugin | ❌ None |
+| **Recommended RAM Footprint** | **⚡ Ultra Light (< 300MB RAM)** | 🐢 4GB+ RAM (Rspamd/ClamAV/Solr) | ⚠️ 2GB - 4GB RAM (Amavisd/ClamAV) | ⚡ Light (Requires LAMP/IMAP) | 🐢 8GB+ RAM minimum |
+| **Docker Compose 1-Line Deploy** | **🚀 Native `docker compose up -d`** | ✅ Native Docker stack | ❌ Bare-metal bash script | ❌ Webmail container only | ❌ Monolithic enterprise installer |
+| **License Model** | **Open Core (Free Community / Enterprise)** | Open Source (GPL-3.0) | Open Source / Paid Pro UI | Open Source (GPL-3.0) | Open Source / Paid Network Ed. |
+
+<details>
+<summary><b>🔍 Detailed Comparison Notes & Architecture Clarifications</b></summary>
+
+1. **Roundcube** is strictly a Webmail Client (MUA); it requires an existing Postfix + Dovecot infrastructure. It provides an excellent responsive skin (*Elastic*) and basic remote image blocking, but lacks server-side audit, legal hold, and outbox scheduling without third-party plugins.
+2. **Mailcow: dockerized** is a complete mail server suite using SOGo as its primary groupware webmail. It supports native CalDAV/CardDAV and Docker deployment, but does not provide a native outbound email moderation queue or WORM legal hold out-of-the-box (recommends external Mailpiler pairing).
+3. **iRedMail** offers a free core script with open-source components, while advanced web administration, outbound quarantine/throttling, and archiving UI are part of the commercial *iRedAdmin-Pro* license.
+4. **Zimbra Collaboration** provides a comprehensive enterprise suite, with advanced DLP policies, legal hold, and mobile synchronization prioritized in its commercial *Network Edition*.
+5. **SecureMail** integrates the MTA, IMAP engine, database, and a responsive TypeScript Webmail into a unified, lightweight Docker stack with native 7-stage security auditing, privacy tracking isolation, and DLP watermarking enabled out-of-the-box.
+</details>
+
+--- | :---: | :---: | :---: | :---: | :---: |
 | **Outbound Email Security Audit** | **✅ Built-in (7-Stage)** | ❌ None | 💰 Paid Pro only | ❌ None | ❌ None |
 | **Web Beacon Anti-Tracking** | **✅ Vector Isolation** | ❌ None | ❌ None | ⚠️ Basic Blocker | ❌ None |
 | **RFC 5545 Meeting Center & RSVP** | **✅ Native 2-Way Sync** | ⚠️ Basic SOGo | 💰 SOGo Plugin | ⚠️ Plugin required | ✅ Built-in |

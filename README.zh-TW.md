@@ -44,10 +44,35 @@
 
 ---
 
-## 📊 規格對比矩陣 (SecureMail 與主流競品對比)
+## 📊 主流郵件方案客觀規格對比矩陣
 
-| 功能特性 (Features) | **SecureMail Enterprise** | **Mailcow: dockerized** | **iRedMail** | **Roundcube** | **Zimbra** |
+> *最後核實與更新時間：2026 年 8 月。依據各專案官方最新文檔、開源版本與公開發行規格進行客觀對比。*
+
+| 功能特性 / 評測維度 | **SecureMail Enterprise** | **Mailcow: dockerized** | **iRedMail** | **Roundcube Webmail** | **Zimbra Collaboration** |
 | :--- | :---: | :---: | :---: | :---: | :---: |
+| **系統架構定位** | **完整伺服器 + 現代化 Webmail** | 完整伺服器 + SOGo 介面 | 完整伺服器 + 開源 Webmail | 僅為 Webmail 客戶端 (MUA) | 完整企業協作套件 |
+| **企業外發郵件安全審核** | **✅ 內建 7 階段審核流程** | ❌ 無原生審核簽核佇列 | 💰 需加購 iRedAdmin-Pro | ❌ 無 (僅前端客戶端) | 💰 需加購 Network 商業版 |
+| **遠端圖片隱私防追蹤** | **✅ 向量佔位安全隔離** | ⚠️ 基礎圖片阻擋 (SOGo) | ⚠️ 基礎圖片阻擋 | ✅ 原生「顯示圖片」開關 | ⚠️ 基礎圖片阻擋 |
+| **RFC 5545 會議排程與 RSVP** | **✅ 原生雙向整合** | ✅ 原生支援 (SOGo CalDAV) | 💰 需 SOGo 組件支援 | ⚠️ 需安裝第三方外掛插件 | ✅ 原生內建支援 |
+| **行動裝置手機自適應 (RWD)** | **✅ 原生單欄下鑽狀態機** | ⚠️ 響應式 SOGo 主題 | ⚠️ 需 Elastic 皮膚 / SOGo | ✅ 官方 Elastic 響應式皮膚 | ⚠️ Zimbra Modern UI |
+| **全量合規歸檔庫 (WORM)** | **✅ 原生 SHA-256 / Legal Hold** | ⚠️ 建議外掛 Mailpiler | 💰 需加購 iRedAdmin-Pro | ❌ 無 (僅前端客戶端) | 💰 需加購 Network 商業版 |
+| **Web DLP 動態防洩密浮水印** | **✅ 原生動態渲染防截圖** | ❌ 無 | ❌ 無 | ❌ 無 | ❌ 無 |
+| **發信緩衝撤回與預約發信** | **✅ 內建 5s 撤回 / 背景定時** | ❌ 無 | ❌ 無 | ⚠️ 需安裝第三方外掛插件 | ❌ 無 |
+| **系統建議記憶體佔用** | **⚡ 極致輕量 (< 300MB RAM)** | 🐢 需 4GB+ RAM (ClamAV/Solr) | ⚠️ 需 2GB - 4GB RAM | ⚡ 輕量 (需額外 LAMP/IMAP) | 🐢 需 8GB+ RAM 最低配置 |
+| **Docker Compose 一鍵啟動** | **🚀 原生 `docker compose up -d`** | ✅ 原生 Docker 堆疊 | ❌ 腳本裸機安裝 | ❌ 僅提供 Webmail 容器 | ❌ 龐大單體安裝包 |
+| **開源與授權模式** | **Open Core (免費社群 / 企業版)** | 開源 (GPL-3.0) | 開源基礎版 / 商業 Pro 後台 | 開源 (GPL-3.0) | 開源版 / 商業 Network 版 |
+
+<details>
+<summary><b>🔍 詳細規格說明與架構背景澄清</b></summary>
+
+1. **Roundcube** 定位為純郵件網頁客戶端（MUA），本身不包含 Postfix/Dovecot 郵件服務，具備優秀的 Elastic 響應式皮膚與圖片阻擋，但外發審核、定時發信與歸檔需依賴額外後端與第三方插件。
+2. **Mailcow: dockerized** 為成熟的 Docker 郵件伺服器套件，群組功能依賴 SOGo 提供 CalDAV/CardDAV，但不具備開箱即用的外發簽核審批流程與 WORM 合規存證（官方建議另行整合 Mailpiler）。
+3. **iRedMail** 提供基礎開源安裝腳本，進階 Web 管理後台、外發隔離節流與郵件歸檔主要集中於商業版 *iRedAdmin-Pro*。
+4. **Zimbra Collaboration** 為全功能企業套件，其深度 DLP 政策、Legal Hold 法規留存與備份等進階功能主要提供於商業 *Network Edition*。
+5. **SecureMail** 將 MTA、IMAP 引擎、資料庫與響應式 TypeScript Webmail 深度整合為極輕量容器堆疊，原生內建 7 階段安全審核、Web Beacon 隱私隔離與動態防洩密浮水印。
+</details>
+
+--- | :---: | :---: | :---: | :---: | :---: |
 | **企業外發郵件安全審核** | **✅ 內建 7 階段攔截** | ❌ 無 | 💰 需加購 Pro 版 | ❌ 無 | ❌ 無 |
 | **遠端圖片隱私防追蹤** | **✅ 向量佔位安全隔離** | ❌ 無 | ❌ 無 | ⚠️ 基礎阻擋 | ❌ 無 |
 | **RFC 5545 會議排程與 RSVP** | **✅ 原生雙向整合** | ⚠️ 基礎 SOGo | 💰 需外掛 SOGo | ⚠️ 需外掛插件 | ✅ 內建支援 |
