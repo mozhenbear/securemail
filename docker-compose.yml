@@ -64,11 +64,9 @@ services:
       - ./docker/dovecot/dovecot.conf:/etc/dovecot/dovecot.conf:ro
       - ./docker/dovecot/dovecot-sql.conf.ext:/etc/dovecot/dovecot-sql.conf.ext:ro
 
-  # 4. SecureMail Web & API Server (程式碼在 ./backend，本機即時修改即時反映)
+  # 4. SecureMail Web & API Server (使用官方發佈之多架構映像檔)
   web:
-    build:
-      context: .
-      dockerfile: docker/web/Dockerfile
+    image: mozhenbear/securemail-web:latest
     container_name: securemail_web
     restart: unless-stopped
     depends_on:
@@ -90,8 +88,6 @@ services:
       SMTP_PORT: 25
       IMAP_HOST: dovecot
       IMAP_PORT: 143
-    volumes:
-      - ./backend:/app
-      - /app/node_modules
+      JWT_SECRET: securemail_production_jwt_master_secret_2026_default
     ports:
       - "33333:3000"
