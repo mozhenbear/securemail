@@ -44,20 +44,33 @@
 
 ---
 
-## 📊 规格对比矩阵 (SecureMail 与主流竞品对比)
+## 📊 主流邮件方案客观规格对比矩阵
 
-| 功能特性 (Features) | **SecureMail Enterprise** | **Mailcow: dockerized** | **iRedMail** | **Roundcube** | **Zimbra** |
+> *最后核实与更新时间：2026 年 8 月。依据各项目官方最新文档、开源版本与公开发行规格进行客观对比。*
+
+| 功能特性 / 评测维度 | **SecureMail Enterprise** | **Mailcow: dockerized** | **iRedMail** | **Roundcube Webmail** | **Zimbra Collaboration** |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| **企业外发邮件安全审核** | **✅ 内置 7 阶段拦截** | ❌ 无 | 💰 需加购 Pro 版 | ❌ 无 | ❌ 无 |
-| **远程图片隐私防追踪** | **✅ 矢量占位安全隔离** | ❌ 无 | ❌ 无 | ⚠️ 基础阻挡 | ❌ 无 |
-| **RFC 5545 会议日程与 RSVP** | **✅ 原生双向整合** | ⚠️ 基础 SOGo | 💰 需外挂 SOGo | ⚠️ 需外挂插件 | ✅ 内置支持 |
-| **移动设备手机自适应 (RWD)** | **✅ 原生单栏下钻** | ⚠️ 部分适配 | 💰 需付费皮肤 | ⚠️ 需自定义主题 | ⚠️ 界面厚重 |
-| **全量合规归档库 (WORM)** | **✅ SHA-256 / Legal Hold** | ⚠️ 需整合 Mail Piler | 💰 需加购 Pro 版 | ❌ 无 | 💰 需付费网络版 |
-| **Web DLP 动态防泄密水印** | **✅ 原生动态渲染** | ❌ 无 | ❌ 无 | ❌ 无 | ❌ 无 |
-| **发信缓冲撤回与预约发信** | **✅ 内置 5s 撤回/定时** | ❌ 无 | ❌ 无 | ⚠️ 需外挂插件 | ❌ 无 |
-| **硬件资源内存占用** | **⚡ 极致轻量 (< 300MB)** | 🐢 厚重 (需 4GB+ RAM) | ⚠️ 中等 (需 2GB+ RAM) | ⚠️ 需依赖 LAMP | 🐢 极厚重 (需 8GB+ RAM) |
-| **Docker 一键部署** | **🚀 1 行指令 (`docker compose`)** | ⚠️ 配置脚本繁复 | ❌ 脚本裸机安装 | ❌ 仅为前端 Web | ❌ 单体庞大难容器化 |
-| **国际化多语系 (i18n)** | **✅ 繁中 / 简中 / 英文** | ✅ 多语系 | ✅ 多语系 | ✅ 多语系 | ✅ 多语系 |
+| **系统架构定位** | **完整服务器 + 现代化 Webmail** | 完整服务器 + SOGo 界面 | 完整服务器 + 开源 Webmail | 仅为 Webmail 客户端 (MUA) | 完整企业协作套件 |
+| **企业外发邮件安全审核** | **✅ 内置 7 阶段审核流程** | ❌ 无原生审核签核队列 | 💰 需加购 iRedAdmin-Pro | ❌ 无 (仅前端客户端) | 💰 需加购 Network 商业版 |
+| **远程图片隐私防追踪** | **✅ 矢量占位安全隔离** | ⚠️ 基础图片阻挡 (SOGo) | ⚠️ 基础图片阻挡 | ✅ 原生「显示图片」开关 | ⚠️ 基础图片阻挡 |
+| **RFC 5545 会议日程与 RSVP** | **✅ 原生双向整合** | ✅ 原生支持 (SOGo CalDAV) | 💰 需 SOGo 组件支持 | ⚠️ 需安装第三方插件 | ✅ 原生内置支持 |
+| **移动设备手机自适应 (RWD)** | **✅ 原生单栏下钻状态机** | ⚠️ 响应式 SOGo 主题 | ⚠️ 需 Elastic 皮肤 / SOGo | ✅ 官方 Elastic 响应式皮肤 | ⚠️ Zimbra Modern UI |
+| **全量合规归档库 (WORM)** | **✅ 原生 SHA-256 / Legal Hold** | ⚠️ 建议外挂 Mailpiler | 💰 需加购 iRedAdmin-Pro | ❌ 无 (仅前端客户端) | 💰 需加购 Network 商业版 |
+| **Web DLP 动态防泄密水印** | **✅ 原生动态渲染防截图** | ❌ 无 | ❌ 无 | ❌ 无 | ❌ 无 |
+| **发信缓冲撤回与预约发信** | **✅ 内置 5s 撤回 / 背景定时** | ❌ 无 | ❌ 无 | ⚠️ 需安装第三方插件 | ❌ 无 |
+| **系统建议内存占用** | **⚡ 极致轻量 (< 300MB RAM)** | 🐢 需 4GB+ RAM (ClamAV/Solr) | ⚠️ 需 2GB - 4GB RAM | ⚡ 轻量 (需额外 LAMP/IMAP) | 🐢 需 8GB+ RAM 最低配置 |
+| **Docker Compose 一键启动** | **🚀 原生 `docker compose up -d`** | ✅ 原生 Docker 堆栈 | ❌ 脚本裸机安装 | ❌ 仅提供 Webmail 容器 | ❌ 庞大单体安装包 |
+| **开源与授权模式** | **Open Core (免费社区 / 企业版)** | 开源 (GPL-3.0) | 开源基础版 / 商业 Pro 后台 | 开源 (GPL-3.0) | 开源版 / 商业 Network 版 |
+
+<details>
+<summary><b>🔍 详细规格说明与架构背景澄清</b></summary>
+
+1. **Roundcube** 定位为纯邮件网页客户端（MUA），本身不包含 Postfix/Dovecot 邮件服务，具备优秀的 Elastic 响应式皮肤与图片阻挡，但外发审核、定时发信与归档需依赖额外后端与第三方插件。
+2. **Mailcow: dockerized** 为成熟的 Docker 邮件服务器套件，群组功能依赖 SOGo 提供 CalDAV/CardDAV，但不具备开箱即用的外发签核审批流程与 WORM 合规存证（官方建议另行整合 Mailpiler）。
+3. **iRedMail** 提供基础开源安装脚本，进阶 Web 管理后台、外发隔离节流与邮件归档主要集中于商业版 *iRedAdmin-Pro*。
+4. **Zimbra Collaboration** 为全功能企业套件，其深度 DLP 政策、Legal Hold 法规留存与备份等进阶功能主要提供于商业 *Network Edition*。
+5. **SecureMail** 将 MTA、IMAP 引擎、数据库与响应式 TypeScript Webmail 深度整合为极轻量容器堆栈，原生内置 7 阶段安全审核、Web Beacon 隐私隔离与动态防泄密水印。
+</details>
 
 ---
 

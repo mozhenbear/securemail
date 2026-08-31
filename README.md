@@ -72,18 +72,6 @@
 5. **SecureMail** integrates the MTA, IMAP engine, database, and a responsive TypeScript Webmail into a unified, lightweight Docker stack with native 7-stage security auditing, privacy tracking isolation, and DLP watermarking enabled out-of-the-box.
 </details>
 
---- | :---: | :---: | :---: | :---: | :---: |
-| **Outbound Email Security Audit** | **✅ Built-in (7-Stage)** | ❌ None | 💰 Paid Pro only | ❌ None | ❌ None |
-| **Web Beacon Anti-Tracking** | **✅ Vector Isolation** | ❌ None | ❌ None | ⚠️ Basic Blocker | ❌ None |
-| **RFC 5545 Meeting Center & RSVP** | **✅ Native 2-Way Sync** | ⚠️ Basic SOGo | 💰 SOGo Plugin | ⚠️ Plugin required | ✅ Built-in |
-| **Mobile Responsive (RWD)** | **✅ Native Drilldown** | ⚠️ Partial | 💰 Paid Skin | ⚠️ Theme required | ⚠️ Heavy |
-| **Full Compliance WORM Archiving** | **✅ SHA-256 / Legal Hold** | ⚠️ Mail Piler Addon | 💰 Paid Pro only | ❌ None | 💰 Paid Network |
-| **Web DLP Dynamic Watermark** | **✅ Native Anti-Leak** | ❌ None | ❌ None | ❌ None | ❌ None |
-| **5s Undo Send & Scheduled Send** | **✅ Built-in** | ❌ None | ❌ None | ⚠️ Plugin required | ❌ None |
-| **Memory Footprint** | **⚡ Ultra Light (< 300MB)** | 🐢 Heavy (4GB+ RAM) | ⚠️ Medium (2GB+ RAM) | ⚠️ Requires LAMP | 🐢 Very Heavy (8GB+ RAM) |
-| **Docker Deployment** | **🚀 1 Command (`docker compose`)** | ⚠️ Complex scripts | ❌ Bare-metal script | ❌ Webmail only | ❌ Monolithic |
-| **Multi-Language (i18n)** | **✅ EN / zh-TW / zh-CN** | ✅ Multi-lang | ✅ Multi-lang | ✅ Multi-lang | ✅ Multi-lang |
-
 ---
 
 ## ✨ Key Features
