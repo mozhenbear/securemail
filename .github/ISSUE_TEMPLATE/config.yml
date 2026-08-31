@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 💬 GitHub Discussions & Questions
+    url: https://github.com/mozhenbear/securemail/discussions
+    about: Ask questions, discuss deployment environments, or share ideas with the community.
+  - name: 📖 Full User & Deployment Guide
+    url: https://github.com/mozhenbear/securemail/blob/main/USER_AND_DEPLOYMENT_GUIDE.md
+    about: Review comprehensive architecture, port mapping, and troubleshooting documentation.
