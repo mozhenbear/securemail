@@ -1,0 +1,14 @@
+# Dependency and temporary files
+node_modules
+npm-debug.log
+.git
+.github
+.DS_Store
+
+# Data and Runtime Secrets
+data/
+*.jwt_secret
+*.env
+*.env.*
+*.pem
+*.key
